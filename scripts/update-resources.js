@@ -1,5 +1,5 @@
 const FS = require('fs');
-const Request = require('request');
+const Axios = require('axios');
 
 const filesToDownload = {
 	"resources/EResult.js": "https://raw.githubusercontent.com/DoctorMcKay/node-steam-user/master/enums/EResult.js"
@@ -7,7 +7,7 @@ const filesToDownload = {
 
 for (let destinationPath in filesToDownload) {
 	console.log("Downloading " + filesToDownload[destinationPath] + " -> " + __dirname.replace(/\\/g, '/') + "/../" + destinationPath);
-	Request.get({
+	Axios.get({
 		"uri": filesToDownload[destinationPath],
 		"gzip": true
 	}, (err, res, body) => {
